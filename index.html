@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Alphabet Flash Cards</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background: #f0f8ff;
+      font-family: 'Arial', sans-serif;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      width: 200px;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 100px;
+      color: #4a90e2;
+      margin-bottom: 20px;
+      transition: 0.3s;
+    }
+
+    .controls {
+      display: flex;
+      gap: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      background-color: #4a90e2;
+      color: white;
+      transition: background-color 0.2s;
+    }
+
+    button:hover {
+      background-color: #357abd;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card" id="flashcard">A</div>
+
+  <div class="controls">
+    <button onclick="prevLetter()">Previous</button>
+    <button onclick="nextLetter()">Next</button>
+  </div>
+
+  <script>
+    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split('');
+    let currentIndex = 0;
+
+    const flashcard = document.getElementById('flashcard');
+
+    function updateCard() {
+      flashcard.textContent = alphabet[currentIndex];
+    }
+
+    function nextLetter() {
+      currentIndex = (currentIndex + 1) % alphabet.length;
+      updateCard();
+    }
+
+    function prevLetter() {
+      currentIndex = (currentIndex - 1 + alphabet.length) % alphabet.length;
+      updateCard();
+    }
+  </script>
+
+</body>
+</html>
